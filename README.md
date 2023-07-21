@@ -1,6 +1,4 @@
 # flutter_application_2
- 
-## Getting Started
 
 # Scaffold
 
