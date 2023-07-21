@@ -12,18 +12,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.amber));
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.amber));
     return SafeArea(
-      bottom: true,
-      top: true,
-      left: false,
-      right: false,
-       
       child: Scaffold(
-        appBar: AppBar(title: const Text(" App Bar in Scaffold")),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(180.0),
+          child: AppBar(title: const Text(" App Bar in Scaffold"))),
         backgroundColor: Colors.blueGrey.shade200,
-        floatingActionButton:
-            FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {}, child: const Icon(Icons.add)),
         body: const Center(child: Text("Body in Scaffold")),
         // extendBody: ,
         primary: true,
