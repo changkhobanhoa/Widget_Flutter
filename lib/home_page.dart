@@ -14,78 +14,34 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.amber));
-    return SafeArea(
-      child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(180.0),
-          child: AppBar(title: const Text(" App Bar in Scaffold"))),
-        backgroundColor: Colors.blueGrey.shade200,
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {}, child: const Icon(Icons.add)),
-        body: const Center(child: Text("Body in Scaffold")),
-        // extendBody: ,
-        primary: true,
-        endDrawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: const [
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text('End Drawer  '),
-              ),
-            ],
-          ),
-        ),
-        onEndDrawerChanged: (isOpened) {
-          print("$isOpened" + "tien");
-        },
-        bottomSheet: Container(
-            color: Colors.amber,
-            padding: const EdgeInsets.all(12),
-            child: const Text("Bottom Sheet in Scaffold")),
-        drawerDragStartBehavior: DragStartBehavior.down,
-        persistentFooterButtons: <Widget>[
-          ElevatedButton(
-            onPressed: () {},
-            child: const Align(
-              alignment: Alignment.center,
-              child: Text('Footer'),
-            ),
-          ),
-        ],
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: const [
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text('Drawer  '),
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'Business',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              label: 'School',
-            ),
-          ],
-          currentIndex: 1,
-          selectedItemColor: Colors.amber[800],
-          onTap: (int) {},
+    return Container(
+      color: Colors.blue,
+      child: Center(
+        child: ElevatedButton(
+          child: const Text('showModalBottomSheet'),
+          onPressed: () {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return SizedBox(
+                  height: 200,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const Text('Modal BottomSheet'),
+                        ElevatedButton(
+                          child: const Text('Close BottomSheet'),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );
